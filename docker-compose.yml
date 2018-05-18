@@ -8,6 +8,8 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
 
   kibana:
     image: docker.elastic.co/kibana/kibana-oss:6.2.4
@@ -18,3 +20,7 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
+
+volumes:
+  es_data:
+    driver: local
